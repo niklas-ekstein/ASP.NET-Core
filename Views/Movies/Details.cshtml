@@ -1,0 +1,86 @@
+﻿@*Niklas Ekstein 910723-3133
+    View based on a Movie, shows details of a movie *@
+@model MvcMovie.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MovieType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MovieType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Discription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Discription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrailerLink)
+        </dt>
+        <dd class="col-sm-10">
+            <a href="@Model.TrailerLink">Link to trailer</a>
+            @*@Html.DisplayFor(model => model.TrailerLink)*@
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        @*<dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CrewList)
+            </dt>*@
+
+    </dl>
+</div>
+@*@Html.DisplayFor(modelItem => item.Id)*@
+@*<div>*@
+<h4>Movie creaters</h4>
+@foreach (var item in Model.CrewList)
+{
+    <dd class="col-sm-10">
+        <a asp-action="MovieMakers" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</a>
+    </dd>
+}
+@*</div>*@
+
+@*<div>
+        <dd class="col-sm-10">
+            <a asp-action="MovieMakers">Actors & directors list</a>
+        </dd>
+    </div>*@
+
+<div>
+    @*<a asp-action="MovieMakers">Actors & directors list</a> |*@
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
